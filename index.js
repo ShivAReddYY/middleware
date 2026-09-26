@@ -43,7 +43,7 @@ const requestLog = require('./lib/requestLog');
 
 const {
     app, server, io, PORT, FRONTEND_URL, REQUIRED_GUILD_ID,
-    debugLogger, configProtocol, botRegistry, botHealth
+    debugLogger, configProtocol, botRegistry, botHealth, isOriginAllowed
 } = createBootstrap();
 
 // ─── Wire shared infrastructure together ───
@@ -54,7 +54,7 @@ const runtimeEvents = initRuntimeEvents({ io, botRegistry, moduleState, debugLog
 initSockets({ io, debugLogger, configProtocol, botRegistry, botHealth, moduleState, runtimeEvents });
 
 // ─── Routes ───
-registerAuthRoutes(app, { debugLogger, FRONTEND_URL, REQUIRED_GUILD_ID, CLIENT_ID, CALLBACK_URL });
+registerAuthRoutes(app, { debugLogger, FRONTEND_URL, REQUIRED_GUILD_ID, CLIENT_ID, CALLBACK_URL, isOriginAllowed });
 const { ensureServerAccess } = registerGuildRoutes(app, { ensureAuthenticated, debugLogger, botRegistry, io });
 
 const mountedModules = mountModules(app, { ensureAuthenticated, ensureServerAccess, debugLogger, botRegistry, io });
