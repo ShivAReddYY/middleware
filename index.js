@@ -25,6 +25,7 @@
 // concurrency, and live progress events to the dashboard.
 
 const path = require('path');
+const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -61,7 +62,13 @@ console.log(`📦 Mounted ${mountedModules.length} feature modules: ${mountedMod
 
 // ─── Observability ───
 app.get('/api/debug', (req, res) => res.json(debugLogger.getDebugData()));
-app.get('/debug', (req, res) => res.sendFile(path.join(__dirname, 'debug_data.json')));
+app.get('/debug', (req, res) => {
+    const debugPath = path.join(__dirname, 'debug_data.json');
+    if (fs.existsSync(debugPath)) {
+        return res.sendFile(debugPath);
+    }
+    res.json(debugLogger.getDebugData());
+});
 
 app.get('/api/admin/protocol-stats', ensureAuthenticated, (req, res) => {
     if (!req.user.isAdmin) return res.status(403).json({ success: false, error: 'Admin access required' });

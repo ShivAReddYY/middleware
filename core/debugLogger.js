@@ -53,6 +53,7 @@ class DebugLogger {
             }
         };
 
+        this.saveDebugData();
         this._saveTimer = setInterval(() => this.saveDebugData(), 5000);
         if (this._saveTimer.unref) this._saveTimer.unref();
     }

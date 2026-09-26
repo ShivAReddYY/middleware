@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Environment variables & secrets (CRITICAL: Never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Runtime logs & debug snapshots
+debug_data.json
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backups & temporary files
+*.bak
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
