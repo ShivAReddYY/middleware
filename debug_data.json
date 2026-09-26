@@ -1,0 +1,303 @@
+{
+  "metadata": {
+    "serverStartTime": "2026-09-21T02:33:50.495Z",
+    "lastUpdated": "2026-09-21T02:47:50.353Z",
+    "version": "2.0.0"
+  },
+  "server": {
+    "port": "10000",
+    "frontendUrl": "http://localhost:3000",
+    "nodeEnv": "development",
+    "isProduction": false
+  },
+  "connections": {
+    "activeBots": {
+      "1270691569225433150": {
+        "userId": "1004206704994566164",
+        "socketId": "dlYJn2SRSXKNN7uCAAAB",
+        "serverCount": 4,
+        "servers": [
+          {
+            "id": "1064167325445672980",
+            "name": "SHIVA's server",
+            "icon": null,
+            "memberCount": 4,
+            "channelCount": 6,
+            "roleCount": 4,
+            "ownerId": "1004206704994566164",
+            "joinedAt": "2025-10-09T13:01:25.373Z"
+          },
+          {
+            "id": "1264253596862775388",
+            "name": "ALL IN ONE MAIN",
+            "icon": "https://cdn.discordapp.com/icons/1264253596862775388/1b1a5fc820b59e0438650418c3c627a9.webp",
+            "memberCount": 3,
+            "channelCount": 29,
+            "roleCount": 30,
+            "ownerId": "1004206704994566164",
+            "joinedAt": "2025-10-08T04:57:08.367Z"
+          },
+          {
+            "id": "1424704394955329598",
+            "name": "[ IMP ] Emojis BOT cmd",
+            "icon": "https://cdn.discordapp.com/icons/1424704394955329598/d2e5ed4313d97a88aa730d9853b72a6b.webp",
+            "memberCount": 3,
+            "channelCount": 8,
+            "roleCount": 4,
+            "ownerId": "1004206704994566164",
+            "joinedAt": "2025-10-06T10:32:16.455Z"
+          },
+          {
+            "id": "1461690729213464743",
+            "name": "test",
+            "icon": null,
+            "memberCount": 2,
+            "channelCount": 5,
+            "roleCount": 5,
+            "ownerId": "1162771658130587739",
+            "joinedAt": "2026-01-16T11:57:43.632Z"
+          }
+        ],
+        "lastHeartbeat": "2026-09-21T02:34:50.340Z",
+        "authenticated": true,
+        "isOnline": true,
+        "connectionDuration": 1368
+      }
+    },
+    "userSessions": {},
+    "socketConnections": {
+      "dlYJn2SRSXKNN7uCAAAB": {
+        "connectTime": "2026-09-21T02:34:50.340Z",
+        "type": "bot",
+        "userId": "686a304642e8e3c6ca9d0f3d",
+        "botId": "1270691569225433150"
+      }
+    }
+  },
+  "database": {
+    "mongodb": {
+      "connected": true,
+      "connectionString": "[REDACTED]",
+      "lastError": null
+    }
+  },
+  "discord": {
+    "clientId": "1223549819755433994",
+    "callbackUrl": "http://localhost:10000/auth/discord/callback",
+    "authSessions": []
+  },
+  "realTimeEvents": [
+    {
+      "timestamp": "2026-09-21T02:34:52.326Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:52.273Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:52.221Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:52.168Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:52.018Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:51.916Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:51.816Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:51.712Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:51.708Z",
+      "category": "socket",
+      "event": "servers_updated",
+      "data": {
+        "botId": "1270691569225433150",
+        "serverCount": 4
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.967Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.915Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.862Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.810Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "gemini",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.656Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.556Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.455Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.352Z",
+      "category": "runtime",
+      "event": "module_state_bulk_sync",
+      "data": {
+        "module": "guildMeta",
+        "count": 1
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.342Z",
+      "category": "socket",
+      "event": "servers_updated",
+      "data": {
+        "botId": "1270691569225433150",
+        "serverCount": 4
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:50.340Z",
+      "category": "socket",
+      "event": "bot_connected",
+      "data": {
+        "botId": "1270691569225433150",
+        "userId": "686a304642e8e3c6ca9d0f3d",
+        "socketId": "dlYJn2SRSXKNN7uCAAAB"
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:34:49.715Z",
+      "category": "socket",
+      "event": "connection",
+      "data": {
+        "socketId": "dlYJn2SRSXKNN7uCAAAB"
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:33:51.249Z",
+      "category": "database",
+      "event": "mongodb_connected",
+      "data": {
+        "uri": "[REDACTED]"
+      }
+    },
+    {
+      "timestamp": "2026-09-21T02:33:50.951Z",
+      "category": "system",
+      "event": "server_started",
+      "data": {
+        "port": "10000",
+        "env": "development"
+      }
+    }
+  ],
+  "apiRequests": [],
+  "errors": [],
+  "heartbeats": {
+    "1270691569225433150": {
+      "lastHeartbeat": "2026-09-21T02:47:50.353Z",
+      "isAlive": true
+    }
+  },
+  "statistics": {
+    "totalConnections": 1,
+    "totalBotConnections": 1,
+    "totalUserConnections": 0,
+    "totalApiRequests": 0,
+    "totalErrors": 0
+  }
+}
