@@ -71,6 +71,8 @@ function createBootstrap() {
         autoRemove: 'native'
     });
 
+    const cookieDomain = process.env.COOKIE_DOMAIN || (isProduction ? '.fluenosity.com' : undefined);
+
     app.use(session({
         name: 'ssid',
         secret: process.env.SESSION_SECRET || 'super123-fallback-secret',
@@ -81,6 +83,7 @@ function createBootstrap() {
             httpOnly: true,
             secure: isProduction,
             sameSite: isProduction ? 'none' : 'lax',
+            domain: cookieDomain,
             maxAge: 1000 * 60 * 60 * 24 * 7
         }
     }));
