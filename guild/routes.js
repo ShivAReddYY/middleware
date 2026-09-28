@@ -207,6 +207,39 @@ function registerGuildRoutes(app, { ensureAuthenticated, debugLogger, botRegistr
         });
     });
 
+    app.get('/api/server/:serverId/stats', ensureAuthenticated, async (req, res) => {
+        const { serverId } = req.params;
+        const guildData = await getOrFetchGuildMeta(req, serverId);
+        if (!guildData) {
+            return res.status(404).json({ success: false, error: 'Guild data not found' });
+        }
+
+        const channels = Array.isArray(guildData.channels) ? guildData.channels : [];
+        const textChannels = channels.filter(c => c.type === 0).length;
+        const voiceChannels = channels.filter(c => c.type === 2).length;
+        const categories = Array.isArray(guildData.categories) ? guildData.categories.length : 0;
+        const roleCount = Array.isArray(guildData.roles) ? guildData.roles.length : 0;
+
+        res.json({
+            success: true,
+            data: {
+                serverId,
+                name: guildData.name || '',
+                memberCount: guildData.memberCount || 0,
+                channelCount: channels.length,
+                textChannels,
+                voiceChannels,
+                categories,
+                roleCount,
+                boostLevel: guildData.boostLevel || 0,
+                boostCount: guildData.boostCount || 0,
+                createdAt: guildData.createdAt || new Date().toISOString(),
+                features: Array.isArray(guildData.features) ? guildData.features : [],
+                lastUpdated: new Date()
+            }
+        });
+    });
+
     app.post('/api/server/:serverId/refresh-data', ensureAuthenticated, (req, res) => {
         const { serverId } = req.params;
         moduleState.delete(GUILD_META_MODULE, serverId);

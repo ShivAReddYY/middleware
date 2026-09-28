@@ -8,7 +8,11 @@ function register(app, { ensureAuthenticated }) {
     // same reasoning as quarantine's stats/users split.
     const statsRoutes = require('../../lib/createModuleRoutes').createModuleRoutes(app, { ensureAuthenticated }, 'commandsStats');
 
-    routes.read('/api/server/:serverId/commands/disabled', { warmOnMiss: 'getDisabled', responseKey: 'commands', transform: (d) => d || [] });
+    routes.read('/api/server/:serverId/commands/disabled', {
+        warmOnMiss: 'getDisabled',
+        responseKey: 'commands',
+        transform: (d) => Array.isArray(d) ? d : (Array.isArray(d?.commands) ? d.commands : [])
+    });
 
     routes.post('/api/server/:serverId/commands/disable', 'disable');
     routes.post('/api/server/:serverId/commands/enable', 'enable');
