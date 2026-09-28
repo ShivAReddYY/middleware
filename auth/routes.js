@@ -26,11 +26,16 @@ function registerAuthRoutes(app, { debugLogger, FRONTEND_URL, REQUIRED_GUILD_ID,
         async (req, res) => {
             debugLogger.logApiRequest('GET', '/auth/discord/callback', {}, { status: 302, redirect: `${FRONTEND_URL}/dashboard`, userId: req.user?.id });
 
-            // Permission checks use the bot's own cached guild data
-            // (botRegistry.getGuildData / moduleState) rather than the
-            // Discord API, so we don't need to fetch/store real guild
-            // membership here — this eliminates Discord API rate limiting.
-            req.session.userGuilds = [];
+            if (req.user?.guilds && Array.isArray(req.user.guilds)) {
+                req.session.userGuilds = req.user.guilds.map((g) => ({
+                    id: g.id,
+                    name: g.name,
+                    owner: !!g.owner,
+                    permissions: String(g.permissions || '0')
+                }));
+            } else {
+                req.session.userGuilds = [];
+            }
 
             req.session.save((err) => {
                 if (err) console.error('❌ Session save error:', err);

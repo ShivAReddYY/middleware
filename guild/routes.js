@@ -104,18 +104,43 @@ function registerGuildRoutes(app, { ensureAuthenticated, debugLogger, botRegistr
 
         const userBotServers = allBotServers.filter((s) => s.botUserId === userId);
         if (userBotServers.length > 0) {
-            return res.json({ success: true, servers: userBotServers.map((s) => ({ ...s, accessRole: 'bot_owner' })), role: 'bot_owner' });
+            return res.json({
+                success: true,
+                servers: userBotServers.map((s) => {
+                    const isOwner = botRegistry.isGuildOwner(userId, s.id);
+                    return {
+                        ...s,
+                        hasAdmin: true,
+                        accessRole: isOwner ? 'server_owner' : 'bot_owner'
+                    };
+                }),
+                role: 'bot_owner'
+            });
         }
 
         const accessibleServers = [];
         for (const server of allBotServers) {
-            const guildData = botRegistry.getGuildData(server.id);
-            if (guildData && guildData.owner === userId) {
-                accessibleServers.push({ ...server, accessRole: 'server_owner' });
+            const isOwner = botRegistry.isGuildOwner(userId, server.id);
+            if (isOwner) {
+                accessibleServers.push({ ...server, accessRole: 'server_owner', hasAdmin: true });
                 continue;
             }
             if (botRegistry.isBotManager(userId, server.id)) {
-                accessibleServers.push({ ...server, accessRole: 'bot_manager' });
+                accessibleServers.push({ ...server, accessRole: 'bot_manager', hasAdmin: true });
+                continue;
+            }
+            const userGuild = userGuilds.find((g) => g.id === server.id);
+            if (userGuild) {
+                const isAdmin = userGuild.owner ||
+                    ((BigInt(userGuild.permissions || '0') & 0x8n) === 0x8n) ||
+                    ((BigInt(userGuild.permissions || '0') & 0x20n) === 0x20n);
+                if (isAdmin) {
+                    accessibleServers.push({
+                        ...server,
+                        accessRole: userGuild.owner ? 'server_owner' : 'admin',
+                        hasAdmin: true
+                    });
+                }
             }
         }
 
